@@ -16,6 +16,7 @@
         <div class="tabs">
             <button class="tab-btn active" data-tab="journal">Journal Article</button>
             <button class="tab-btn" data-tab="online">Online Media</button>
+            <button class="tab-btn" data-tab="aiTab">AI Reference</button>
         </div>
 
         <!-- ===========================
@@ -121,6 +122,46 @@
             </div>
 
             <button class="btn" id="generateOnline">Generate Reference</button>
+        </div>
+
+        <!-- ===========================
+                AI REFERENCE TAB
+        ================================ -->
+        <div class="tab-content" id="aiTab">
+
+            <h2>AI Reference (Harvard Style)</h2>
+
+            <div class="form-group">
+                <label>Company</label>
+                <input id="ai_company" placeholder="e.g. OpenAI">
+            </div>
+
+            <div class="form-group">
+                <label>Year</label>
+                <input id="ai_year" placeholder="e.g. 2024">
+            </div>
+
+            <div class="form-group">
+                <label>Product Name</label>
+                <input id="ai_product" placeholder="e.g. ChatGPT">
+            </div>
+
+            <div class="form-group">
+                <label>AI Model Type</label>
+                <input id="ai_model" placeholder="e.g. Large language model">
+            </div>
+
+            <div class="form-group">
+                <label>Retrieved Date</label>
+                <input id="ai_retrieved" placeholder="e.g. October 19, 2024">
+            </div>
+
+            <div class="form-group">
+                <label>URL</label>
+                <input id="ai_url" placeholder="https://chat.openai.com/chat">
+            </div>
+
+            <button class="btn" id="generateAI">Generate Reference</button>
         </div>
 
         <!-- ==============================

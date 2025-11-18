@@ -2,6 +2,7 @@
 // API BASE URL (Render URL)
 // =========================
 const API_BASE = "https://unsw-reference-generator.onrender.com";
+// const API_BASE = "http://127.0.0.1:8000";
 
 // =========================
 // TAB SWITCHING
@@ -77,6 +78,33 @@ document.getElementById("generateOnline").addEventListener("click", async () => 
 });
 
 // =========================
+// GENERATE AI REFERENCE
+// =========================
+document.getElementById("generateAI").addEventListener("click", async () => {
+    const payload = {
+        company: document.getElementById("ai_company").value,
+        year: document.getElementById("ai_year").value,
+        product_name: document.getElementById("ai_product").value,
+        model_type: document.getElementById("ai_model").value,
+        retrieved_date: document.getElementById("ai_retrieved").value,
+        url: document.getElementById("ai_url").value
+    };
+
+    const response = await fetch(`${API_BASE}/generate/ai`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+    
+    console.log("API RESPONSE:", data);
+
+    document.getElementById("output").innerHTML = data.reference;
+    document.getElementById("intext").innerHTML = data.intext;
+});
+
+// =========================
 // COPY BUTTON
 // =========================
 document.getElementById("copyBtn").addEventListener("click", () => {
@@ -93,3 +121,4 @@ document.getElementById("copyBtn").addEventListener("click", () => {
             console.error("Copy failed:", err);
         });
 });
+
