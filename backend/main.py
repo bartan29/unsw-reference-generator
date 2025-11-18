@@ -1,16 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from models.journal import JournalArticle
-from models.online_media import OnlineMediaArticle
-from models.ai_reference import AIReference
+from backend.models.journal import JournalArticle
+from backend.models.online_media import OnlineMediaArticle
+from backend.models.ai_reference import AIReference
 
-from formatters.journal_formatter import format_journal_article
-from formatters.online_media_formatter import format_online_media
-from formatters.ai_formatter import format_ai_reference
+from backend.formatters.journal_formatter import format_journal_article
+from backend.formatters.online_media_formatter import format_online_media
+from backend.formatters.ai_formatter import format_ai_reference
 
-from formatters.intext_formatter import (
+from backend.formatters.intext_formatter import (
     format_intext_journal,
-    format_intext_media
+    format_intext_media,
+    format_intext_ai
 )
 
 app = FastAPI()
@@ -62,7 +63,7 @@ def generate_online_media(data: OnlineMediaArticle):
 
 @app.post("/generate/ai")
 def generate_ai(ref: AIReference):
-    reference, intext = format_ai_reference(
+    reference = format_ai_reference(
         ref.company,
         ref.year,
         ref.product_name,
@@ -70,4 +71,5 @@ def generate_ai(ref: AIReference):
         ref.retrieved_date,
         ref.url
     )
+    intext = format_intext_ai(ref.company, ref.year)
     return {"reference": reference, "intext": intext}

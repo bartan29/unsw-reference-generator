@@ -63,16 +63,16 @@ def format_online_media(
     )
     return reference
 
-def format_intext_media(author, newspaper_title, year):
-    """
-    UNSW Online Media In-text:
-    - With author: (Surname Year)
-    - No author: (NewspaperTitle Year)
-    """
+# def format_intext_media(author, newspaper_title, year):
+#     """
+#     UNSW Online Media In-text:
+#     - With author: (Surname Year)
+#     - No author: (NewspaperTitle Year)
+#     """
 
-    if author:
-        surname = author.split()[-1]
-        return f"({surname} {year})"
+#     if author:
+#         surname = author.split()[-1]
+#         return f"({surname} {year})"
 
-    # No author case — use newspaper title
-    return f"({newspaper_title} {year})"
+#     # No author case — use newspaper title
+#     return f"({newspaper_title} {year})"

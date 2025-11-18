@@ -41,3 +41,7 @@ def format_intext_media(author, newspaper_title, year):
 
     # No author case — use newspaper title
     return f"({newspaper_title} {year})"
+
+def format_intext_ai(company, year):
+    # In-text citation only uses Company + Year
+    return f"({company} {year})"
